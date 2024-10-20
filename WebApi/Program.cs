@@ -74,7 +74,6 @@ using (var rng = new RNGCryptoServiceProvider())
 {
     rng.GetBytes(key);
 }
-Console.WriteLine(Convert.ToBase64String(key));
 
 var app = builder.Build();
 

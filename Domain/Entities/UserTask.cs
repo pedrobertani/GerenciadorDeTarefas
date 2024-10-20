@@ -4,6 +4,7 @@ namespace Domain.Entities;
 
 public class UserTask
 {
+    [Key]
     public int TaskId { get; set; }
 
     [Required]
