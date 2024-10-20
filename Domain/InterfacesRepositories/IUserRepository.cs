@@ -4,5 +4,5 @@ namespace Domain.InterfacesRepositories;
 
 public interface IUserRepository
 {
-    Task<Usuario> Register(Usuario usuario, string senha);
+    Task<User> Register(User usuario, string senha);
 }

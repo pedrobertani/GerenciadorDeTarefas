@@ -17,10 +17,10 @@ namespace Application.Services
             _mapper = mapper;
         }
 
-        public async Task<Usuario> Register(UsuarioDto registerDto)
+        public async Task<User> Register(UserDto registerDto)
         {
-            var usuario = _mapper.Map<Usuario>(registerDto);
-            return await _userRepository.Register(usuario, registerDto.Senha);
+            var usuario = _mapper.Map<User>(registerDto);
+            return await _userRepository.Register(usuario, registerDto.Password);
         }
     }
 }

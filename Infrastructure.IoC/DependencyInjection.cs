@@ -20,19 +20,19 @@ public static class DependencyInjection
         AddDataBasesContext(ref services, configuration);
 
         services.AddAutoMapper(cfg => cfg.Internal().MethodMappingEnabled = false,
-            typeof(UsuarioProfile),
-            typeof(TarefaProfile)
+            typeof(UserProfile),
+            typeof(TaskProfile)
             );
 
         //repository
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IAuthRepository, AuthRepository>();
-        services.AddScoped<ITarefaRepository, TarefaRepository>();
+        services.AddScoped<ITaskRepository, TaskRepository>();
 
         //service
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<IAuthService, AuthService>();
-        services.AddScoped<ITarefaService, TarefaService>();
+        services.AddScoped<ITaskService, TaskService>();
 
         return services;
 

@@ -14,15 +14,15 @@ namespace Infrastructure.Data.Repositories
             _context = context;
         }
 
-        public async Task<Usuario> Register(Usuario usuario, string senha)
+        public async Task<User> Register(User usuario, string senha)
         {
             using (var hmac = new System.Security.Cryptography.HMACSHA512())
             {
-                usuario.SenhaSalt = hmac.Key;
-                usuario.SenhaHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(senha));
+                usuario.SaltPassword = hmac.Key;
+                usuario.HashPassword = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(senha));
             }
 
-            await _context.Usuarios.AddAsync(usuario);
+            await _context.User.AddAsync(usuario);
             await _context.SaveChangesAsync();
             return usuario;
         }

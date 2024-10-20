@@ -4,5 +4,5 @@ namespace Domain.InterfacesRepositories;
 
 public interface IAuthRepository
 {
-    Task<Usuario> Login(string nomeUsuario);
+    Task<User> Login(string nomeUsuario);
 }

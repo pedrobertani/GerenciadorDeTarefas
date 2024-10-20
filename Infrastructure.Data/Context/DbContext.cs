@@ -7,6 +7,6 @@ public class DataContext : DbContext
 {
     public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
-    public DbSet<Usuario> Usuarios { get; set; }
-    public DbSet<Tarefa> Tarefas { get; set; }
+    public DbSet<User> User { get; set; }
+    public DbSet<UserTask> Task { get; set; }
 }

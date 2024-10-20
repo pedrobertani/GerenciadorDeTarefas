@@ -9,11 +9,11 @@ namespace WebApi.Controllers;
 [Authorize]
 [ApiController]
 [Route("api/[controller]")]
-public class TarefaController : ControllerBase
+public class TaskController : ControllerBase
 {
-    private readonly ITarefaService _tarefaService;
+    private readonly ITaskService _tarefaService;
 
-    public TarefaController(ITarefaService tarefaService)
+    public TaskController(ITaskService tarefaService)
     {
         _tarefaService = tarefaService;
     }
@@ -22,34 +22,34 @@ public class TarefaController : ControllerBase
     public async Task<IActionResult> GetTasks(int pageNumber = 1, int pageSize = 10)
     {
         var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
-        var tasks = await _tarefaService.ObterTarefas(userId, pageNumber, pageSize);
+        var tasks = await _tarefaService.GetAllTasks(userId, pageNumber, pageSize);
         return Ok(tasks);
     }
 
     [HttpGet("{id}")]
     public async Task<IActionResult> GetTaskById(int id)
     {
-        var task = await _tarefaService.ObterTarefaPorId(id);
+        var task = await _tarefaService.GetTaskById(id);
         if (task == null) return NotFound();
         return Ok(task);
     }
 
     [HttpPost]
-    public async Task<IActionResult> AddTask([FromBody] TarefaDto tarefaDto)
+    public async Task<IActionResult> AddTask([FromBody] UserTaskDto tarefaDto)
     {
         var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
-        tarefaDto.UsuarioId = userId;
+        tarefaDto.UserId = userId;
 
-        var success = await _tarefaService.AdicionarTarefa(tarefaDto);
+        var success = await _tarefaService.AddTask(tarefaDto);
         if (success) return Ok(tarefaDto);
 
         return BadRequest("Unable to add task");
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateTask(int id, [FromBody] TarefaDto tarefaDto)
+    public async Task<IActionResult> UpdateTask(int id, [FromBody] UserTaskDto tarefaDto)
     {
-        var success = await _tarefaService.AtualizarTarefa(id, tarefaDto);
+        var success = await _tarefaService.UpdateTask(id, tarefaDto);
         if (success) return Ok(tarefaDto);
 
         return BadRequest("Unable to update task");
@@ -58,9 +58,9 @@ public class TarefaController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteTask(int id)
     {
-        var success = await _tarefaService.RemoverTarefa(id);
+        var success = await _tarefaService.RemoveTask(id);
         if (!success) return NotFound();
 
-        return Ok("Task successfully deleted");
+        return Ok("UserTask successfully deleted");
     }
 }

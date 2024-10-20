@@ -27,21 +27,21 @@ public class AuthService : IAuthService
         _mapper = mapper;
     }
 
-    public async Task<Usuario> Login(string nomeUsuario, string senha)
+    public async Task<User> Login(string nomeUsuario, string senha)
     {
         var usuario = await _authRepository.Login(nomeUsuario);
         if (usuario == null) return null;
 
-        using (var hmac = new System.Security.Cryptography.HMACSHA512(usuario.SenhaSalt))
+        using (var hmac = new System.Security.Cryptography.HMACSHA512(usuario.SaltPassword))
         {
             var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(senha));
-            if (!computedHash.SequenceEqual(usuario.SenhaHash)) return null;
+            if (!computedHash.SequenceEqual(usuario.HashPassword)) return null;
         }
 
         return usuario;
     }
 
-    public string GenerateJwtToken(Usuario usuario)
+    public string GenerateJwtToken(User usuario)
     {
         var tokenHandler = new JwtSecurityTokenHandler();
 
@@ -51,8 +51,8 @@ public class AuthService : IAuthService
         {
             Subject = new ClaimsIdentity(new Claim[]
             {
-                new Claim(ClaimTypes.NameIdentifier, usuario.UsuarioId.ToString()),
-                new Claim(ClaimTypes.Name, usuario.NomeUsuario)
+                new Claim(ClaimTypes.NameIdentifier, usuario.UserId.ToString()),
+                new Claim(ClaimTypes.Name, usuario.UserName)
             }),
             Expires = now.AddHours(1),
             NotBefore = now,

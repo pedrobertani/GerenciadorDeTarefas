@@ -37,7 +37,7 @@ public class AuthServiceTests
     {
         // Arrange
         // Simulando que o repositório retorna null quando um usuário não é encontrado
-        _authRepositoryMock.Setup(repo => repo.Login(It.IsAny<string>())).ReturnsAsync((Usuario)null);
+        _authRepositoryMock.Setup(repo => repo.Login(It.IsAny<string>())).ReturnsAsync((User)null);
 
         // Act
         var result = await _authService.Login("unknown_user", "password");

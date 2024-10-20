@@ -36,12 +36,12 @@ namespace Tests
         public void GenerateJwtToken_ShouldReturnValidToken()
         {
             // Arrange
-            var usuario = new Usuario
+            var usuario = new User
             {
-                UsuarioId = 1,
-                NomeUsuario = "test_user",
-                SenhaHash = new byte[64],
-                SenhaSalt = new byte[128] 
+                UserId = 1,
+                UserName = "test_user",
+                HashPassword = new byte[64],
+                SaltPassword = new byte[128] 
             };
 
             // Act

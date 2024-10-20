@@ -28,26 +28,26 @@ public class UserServiceTests
     public async Task Register_ShouldCallUserRepositoryRegister()
     {
         // Arrange
-        var registerDto = new UsuarioDto
+        var registerDto = new UserDto
         {
-            NomeUsuario = "testuser",
-            Senha = "testpassword"
+            UserName = "testuser",
+            Password = "testpassword"
         };
 
-        var usuario = new Usuario
+        var usuario = new User
         {
-            NomeUsuario = "testuser"
+            UserName = "testuser"
         };
 
-        _mapperMock.Setup(m => m.Map<Usuario>(It.IsAny<UsuarioDto>())).Returns(usuario);
-        _userRepositoryMock.Setup(repo => repo.Register(It.IsAny<Usuario>(), It.IsAny<string>())).ReturnsAsync(usuario);
+        _mapperMock.Setup(m => m.Map<User>(It.IsAny<UserDto>())).Returns(usuario);
+        _userRepositoryMock.Setup(repo => repo.Register(It.IsAny<User>(), It.IsAny<string>())).ReturnsAsync(usuario);
 
         // Act
         var result = await _userService.Register(registerDto);
 
         // Assert
         Assert.NotNull(result);
-        _mapperMock.Verify(m => m.Map<Usuario>(registerDto), Times.Once);
-        _userRepositoryMock.Verify(repo => repo.Register(usuario, registerDto.Senha), Times.Once);
+        _mapperMock.Verify(m => m.Map<User>(registerDto), Times.Once);
+        _userRepositoryMock.Verify(repo => repo.Register(usuario, registerDto.Password), Times.Once);
     }
 }

@@ -18,7 +18,7 @@ namespace WebApi.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] UsuarioDto registerDto)
+        public async Task<IActionResult> Register([FromBody] UserDto registerDto)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);

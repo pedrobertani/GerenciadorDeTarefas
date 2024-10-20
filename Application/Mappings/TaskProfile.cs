@@ -4,10 +4,10 @@ using Domain.Entities;
 
 namespace Application.Mappings;
 
-public class TarefaProfile : Profile
+public class TaskProfile : Profile
 {
-    public TarefaProfile()
+    public TaskProfile()
     {
-        CreateMap<Tarefa, TarefaDto>().ReverseMap();
+        CreateMap<Task, UserTaskDto>().ReverseMap();
     }
 }

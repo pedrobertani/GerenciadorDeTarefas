@@ -14,8 +14,8 @@ public class AuthRepository : IAuthRepository
         _context = context;
     }
 
-    public async Task<Usuario> Login(string nomeUsuario)
+    public async Task<User> Login(string nomeUsuario)
     {
-        return await _context.Usuarios.FirstOrDefaultAsync(x => x.NomeUsuario == nomeUsuario);
+        return await _context.User.FirstOrDefaultAsync(x => x.UserName == nomeUsuario);
     }
 }

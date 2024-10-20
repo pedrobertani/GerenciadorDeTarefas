@@ -5,5 +5,5 @@ namespace Application.InterfacesService;
 
 public interface IUserService
 {
-    Task<Usuario> Register(UsuarioDto registerDto);
+    Task<User> Register(UserDto registerDto);
 }
