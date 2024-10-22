@@ -22,6 +22,7 @@ import { LogonComponent } from './pages/logon/logon.component';
 import { TasksComponent } from './pages/tasks/tasks.component';
 import { AuthInterceptor } from './services/Auth.interceptor';
 import { EditTaskDialogComponent } from './pages/edit-task-dialog/edit-task-dialog.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { EditTaskDialogComponent } from './pages/edit-task-dialog/edit-task-dial
     MatIconModule,
     MatTableModule,    
     MatCheckboxModule,
+    MatTooltipModule
 
   ],
   providers: [

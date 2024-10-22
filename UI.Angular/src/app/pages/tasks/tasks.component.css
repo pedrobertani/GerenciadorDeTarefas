@@ -11,3 +11,8 @@
     padding: 16px;
   }
   
+  .mat-cell .text-center {
+    display: flex;
+    justify-content: center;
+  }
+  
