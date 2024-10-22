@@ -72,6 +72,6 @@ Imagens do Projeto
 
 ![image](https://github.com/user-attachments/assets/722fee04-057a-47e0-9832-0e357fff0046)
 
-![image](https://github.com/user-attachments/assets/a39a13fe-1703-42a0-b86e-7bac7ebd9d30)
+![image](https://github.com/user-attachments/assets/bc7b3696-263a-42bb-899c-4578d2355873)
 
-![image](https://github.com/user-attachments/assets/d198772b-eb7e-48ae-a293-dfaae50ebc24)
+![image](https://github.com/user-attachments/assets/12b9eac6-3e8a-44c4-ae19-13ac325d7920)
