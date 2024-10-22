@@ -1,0 +1,24 @@
+<div class="register-container">
+  <h2>Login</h2>
+
+  <!-- Campo Nome de Usuário -->
+  <label>Nome de Usuário:</label>
+  <mat-form-field appearance="fill">
+    <input matInput [(ngModel)]="loginModel.userName" placeholder="Digite seu nome de usuário">
+  </mat-form-field>
+
+  <!-- Campo Senha -->
+  <label>Senha:</label>
+  <mat-form-field appearance="fill">
+    <input matInput [(ngModel)]="loginModel.password" placeholder="Digite sua senha" type="password">
+  </mat-form-field>
+
+  <!-- Botão de Registro -->
+  <button mat-raised-button class="button" (click)="onLogin()">Entrar</button>
+
+  <!-- Botão de Cancelar -->
+  <button mat-raised-button class="button" (click)="navigateToRegister()">Cadastrar Novo Usuário</button>
+  
+  <!-- Mensagem de Sucesso ou Erro -->
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+</div>

@@ -1,0 +1,61 @@
+.register-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    max-width: 400px;
+    margin: 40px auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+  }
+  
+  label {
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  
+  mat-form-field input {
+    height: 56px;
+    line-height: 24px;
+    font-size: 16px;
+  }
+  
+  .success-message,
+  .error-message {
+    margin-top: 8px;
+    color: green; /* Mensagens de sucesso em verde */
+  }
+  
+  .error-message {
+    color: red; /* Mensagens de erro em vermelho */
+  }
+  
+  /* Estilo para os botões */
+  button {
+    margin: 8px 0; /* Espaçamento vertical */
+    background-color: gray; /* Cor de fundo do botão */
+    color: white; /* Cor do texto do botão */
+    padding: 10px 20px; /* Espaçamento interno do botão */
+    border: none; /* Remove a borda padrão */
+    border-radius: 4px; /* Arredonda os cantos do botão */
+    cursor: pointer; /* Muda o cursor ao passar o mouse sobre o botão */
+    width: 100%; /* Faz o botão ocupar 100% do contêiner pai */
+  }
+  
+  /* Efeito ao passar o mouse sobre o botão */
+  button.button:hover {
+    background-color: green; /* Cor de fundo ao passar o mouse */
+  }
+  
+  button.button {
+    background-color: gray; /* Cor de fundo do botão */
+    color: white; /* Cor do texto do botão */
+  }
+  

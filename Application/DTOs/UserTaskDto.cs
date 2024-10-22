@@ -1,5 +1,4 @@
 ﻿using Domain.Entities;
-using System.ComponentModel.DataAnnotations;
 
 namespace Application.DTOs;
 
@@ -15,5 +14,4 @@ public class UserTaskDto
     public DateTime DateCreated { get; set; } = DateTime.Now;
 
     public int UserId { get; set; }
-    public User User { get; set; }
 }

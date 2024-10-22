@@ -3,9 +3,10 @@ using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using System.Security.Cryptography;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
+
 
 // Adiciona serviços de controle
 builder.Services.AddControllers();
@@ -41,13 +42,14 @@ builder.Services.AddSwaggerGen(c =>
 // Adiciona a infraestrutura e injeção de dependências
 builder.Services.AddInfrastructure(builder.Configuration);
 
-// Configura CORS (Cross-Origin Resource Sharing)
-builder.Services.AddCors(p => p.AddDefaultPolicy(x =>
-    x.AllowAnyHeader()
-    .AllowAnyMethod()
-    .WithOrigins(builder.Configuration.GetSection("AppSettings:OriginAllowed")?.Value)
-    .AllowCredentials()));
-
+// Configuração de CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        builder => builder.AllowAnyOrigin()
+                          .AllowAnyMethod()
+                          .AllowAnyHeader());
+});
 
 var key = Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Key"]);
 
@@ -68,12 +70,6 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-//gerar chaves 64 bytes
-var key1 = new byte[64]; // 64 bytes = 512 bits
-using (var rng = new RNGCryptoServiceProvider())
-{
-    rng.GetBytes(key);
-}
 
 var app = builder.Build();
 
@@ -92,7 +88,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 // Habilita o CORS
-app.UseCors();
+app.UseCors("AllowAll");
 
 app.MapControllers();
 

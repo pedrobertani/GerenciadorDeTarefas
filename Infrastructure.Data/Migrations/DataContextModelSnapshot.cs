@@ -37,10 +37,6 @@ namespace Infrastructure.Data.Migrations
                         .IsRequired()
                         .HasColumnType("varbinary(max)");
 
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<byte[]>("SaltPassword")
                         .IsRequired()
                         .HasColumnType("varbinary(max)");

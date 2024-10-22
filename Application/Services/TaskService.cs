@@ -16,13 +16,13 @@ public class TaskService : ITaskService
         _taskRepository = taskRepository;
         _mapper = mapper;
     }
-
-
-    public async Task<IEnumerable<UserTaskDto>> GetAllTasks(int userId, int pageNumber, int pageSize)
+    public async Task<(IEnumerable<UserTaskDto> Tasks, int TotalCount)> GetAllTasks(int userId, int pageNumber, int pageSize)
     {
-        var tarefas = await _taskRepository.GetAllTasks(userId, pageNumber, pageSize);
-        return _mapper.Map<IEnumerable<UserTaskDto>>(tarefas);
+        var (tasks, totalCount) = await _taskRepository.GetAllTasks(userId, pageNumber, pageSize);
+        var tasksDto = _mapper.Map<IEnumerable<UserTaskDto>>(tasks);
+        return (tasksDto, totalCount); 
     }
+
 
     public async Task<UserTaskDto> GetTaskById(int taskId)
     {
@@ -33,25 +33,29 @@ public class TaskService : ITaskService
     public async Task<bool> AddTask(UserTaskDto tarefaDto)
     {
         var task = _mapper.Map<UserTask>(tarefaDto);
-        await _taskRepository.AddTask(task);
-        return await _taskRepository.SaveChangedAsync();
+        return await _taskRepository.AddTask(task);
     }
 
-    public async Task<bool> UpdateTask(int taskId, UserTaskDto tarefaDto)
+    public async Task<bool> UpdateTask(UserTaskDto tarefaDto)
     {
-        var task = await _taskRepository.GetTaskById(taskId);
+        var task = await _taskRepository.GetTaskById(tarefaDto.TaskId);
         if (task == null) return false;
 
         _mapper.Map(tarefaDto, task);
-        return await _taskRepository.SaveChangedAsync();
+        return await _taskRepository.UpdateTask(task);
     }
+
+    public async Task<bool> CompleteTask(int taskId)
+    {
+        return await _taskRepository.MakeCompleted(taskId);
+    }
+
 
     public async Task<bool> RemoveTask(int taskId)
     {
         var task = await _taskRepository.GetTaskById(taskId);
         if (task == null) return false;
 
-        await _taskRepository.RemoveTask(task);
-        return await _taskRepository.SaveChangedAsync();
+        return await _taskRepository.RemoveTask(task);
     }
 }

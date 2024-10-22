@@ -1,0 +1,13 @@
+.mat-table {
+    width: 100%;
+  }
+  
+  .mat-header-cell {
+    background-color: #f1f1f1;
+    font-weight: bold;
+  }
+  
+  .mat-cell {
+    padding: 16px;
+  }
+  

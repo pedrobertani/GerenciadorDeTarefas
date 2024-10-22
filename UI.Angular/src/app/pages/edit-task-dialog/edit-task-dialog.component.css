@@ -1,0 +1,56 @@
+.register-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin: 40px auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+
+label {
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+mat-form-field input {
+  height: 56px;
+  line-height: 24px;
+  font-size: 16px;
+}
+
+/* Estilo para os botões */
+button {
+  margin: 8px 5%; 
+  color: white; 
+  padding: 10px 10px; 
+  border: none; 
+  border-radius: 4px; 
+  cursor: pointer; 
+  width: 40%; 
+}
+
+button.button-cancel:hover {
+  background-color: rgb(243, 160, 160);
+}
+
+button.button-save:hover {
+  background-color: rgb(79, 152, 79);
+}
+
+button.button-cancel {
+  color: white; /* Cor do texto do botão */
+  background-color: red; 
+}
+
+button.button-save {
+  color: white; /* Cor do texto do botão */
+  background-color: green; /* Cor do botão de salvar */
+}

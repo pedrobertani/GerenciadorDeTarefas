@@ -20,7 +20,6 @@ namespace Infrastructure.Data.Migrations
                     UserName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     HashPassword = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
                     SaltPassword = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateRegister = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>

@@ -4,15 +4,11 @@ namespace Application.DTOs;
 
 public class UserDto
 {
-    public int UserId { get; set; }
-
+    [Required]
+    [StringLength(50)]
     public string UserName { get; set; }
 
-    public byte[] HashPassword { get; set; }
-
-    public byte[] SaltPassword { get; set; }
-
+    [Required]
+    [StringLength(100, MinimumLength = 6, ErrorMessage = "A senha pode conter de 6 a 100 caracteres.")]
     public string Password { get; set; }
-
-    public DateTime DateRegister { get; set; } = DateTime.Now;
 }

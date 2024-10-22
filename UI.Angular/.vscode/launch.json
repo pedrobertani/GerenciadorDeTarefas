@@ -2,13 +2,18 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "node",
+      "type": "edge",
       "request": "launch",
-      "name": "Launch Program",
-      "skipFiles": [ "<node_internals>/**" ],
-      "program": "${workspaceFolder}/app.js",
-      "cwd": "${workspaceFolder}",
-      "console": "externalTerminal"
+      "name": "localhost (Edge)",
+      "url": "https://localhost:4200",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "localhost (Chrome)",
+      "url": "https://localhost:4200",
+      "webRoot": "${workspaceFolder}"
     }
   ]
 }

@@ -1,0 +1,34 @@
+<div class="register-container">
+  <h2>Registrar Usuário</h2>
+
+  <!-- Campo Nome de Usuário -->
+  <label>Nome de Usuário:</label>
+  <mat-form-field appearance="fill">
+    <input matInput [(ngModel)]="user.userName" placeholder="Digite seu nome de usuário">
+    <mat-error *ngIf="!user.userName">Nome de usuário é obrigatório</mat-error>
+  </mat-form-field>
+
+  <!-- Campo Senha -->
+  <label>Senha:</label>
+  <mat-form-field appearance="fill">
+    <input matInput [(ngModel)]="user.password" placeholder="Digite sua senha" type="password">
+    <mat-error *ngIf="!user.password">Senha é obrigatória</mat-error>
+  </mat-form-field>
+
+  <!-- Campo Confirmação de Senha -->
+  <label>Confirmação de Senha:</label>
+  <mat-form-field appearance="fill">
+    <input matInput [(ngModel)]="user.confirmPassword" placeholder="Confirme sua senha" type="password">
+    <mat-error *ngIf="user.password !== user.confirmPassword && user.confirmPassword">As senhas não coincidem</mat-error>
+  </mat-form-field>
+
+  <!-- Botão de Registro -->
+  <button mat-raised-button class="register-button" (click)="onRegister()" [disabled]="formSubmitted && (!user.userName || !user.password || !user.confirmPassword || user.password !== user.confirmPassword)">Registrar</button>
+
+  <!-- Botão de Cancelar -->
+  <button mat-raised-button class="cancel-button" (click)="onCancel()">Cancelar</button>
+
+  <!-- Mensagem de Sucesso ou Erro -->
+  <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+</div>

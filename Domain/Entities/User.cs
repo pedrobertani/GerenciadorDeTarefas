@@ -16,7 +16,5 @@ public class User
     [Required]
     public byte[] SaltPassword { get; set; }
 
-    public string Password { get; set; }
-
     public DateTime DateRegister { get; set; } = DateTime.Now; 
 }
