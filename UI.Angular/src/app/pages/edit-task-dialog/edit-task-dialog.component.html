@@ -1,24 +1,36 @@
-
 <div class="register-container">
+  <h2 mat-dialog-title>
+    {{ isEditMode ? "Editar Tarefa" : "Adicionar Nova Tarefa" }}
+  </h2>
 
-<h2 mat-dialog-title>{{ isEditMode ? 'Editar Tarefa' : 'Adicionar Nova Tarefa' }}</h2>
+  <form [formGroup]="editTaskForm">
+    <label>Título</label>
+    <mat-form-field appearance="fill" class="full-width">
+      <input
+        matInput
+        formControlName="title"
+        placeholder="Insira o título da tarefa"
+      />
+    </mat-form-field>
 
-<form [formGroup]="editTaskForm">
-  <label>Título</label>
-  <mat-form-field appearance="fill" class="full-width">
-    <input matInput formControlName="title" placeholder="Insira o título da tarefa">
-  </mat-form-field>
+    <label>Descrição</label>
+    <mat-form-field appearance="fill" class="full-width">
+      <textarea
+        matInput
+        formControlName="description"
+        placeholder="Insira a descrição da tarefa"
+      ></textarea>
+    </mat-form-field>
 
-  <label>Descrição</label>
-  <mat-form-field appearance="fill" class="full-width">
-    <textarea matInput formControlName="description" placeholder="Insira a descrição da tarefa"></textarea>
-  </mat-form-field>
+    <mat-checkbox formControlName="completed">Concluída</mat-checkbox>
+  </form>
 
-  <mat-checkbox formControlName="completed">Concluída</mat-checkbox>
-</form>
-
-<div mat-dialog-actions>
-  <button mat-raised-button class="button-cancel"  (click)="onCancel()">Cancelar</button>
-  <button mat-raised-button class="button-save"  (click)="onSave()">{{ isEditMode ? 'Salvar' : 'Adicionar' }}</button>
-</div>
+  <div mat-dialog-actions>
+    <button mat-raised-button class="button-cancel" (click)="onCancel()">
+      Cancelar
+    </button>
+    <button mat-raised-button class="button-save" (click)="onSave()">
+      {{ isEditMode ? "Salvar" : "Adicionar" }}
+    </button>
+  </div>
 </div>

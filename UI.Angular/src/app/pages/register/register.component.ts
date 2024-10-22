@@ -7,7 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
   protected user: User = { userName: '', password: '', confirmPassword: '' };
@@ -18,20 +18,25 @@ export class RegisterComponent {
   constructor(
     private userService: UserService,
     private router: Router,
-    private snackBar: MatSnackBar) {}
+    private snackBar: MatSnackBar,
+  ) {}
 
   protected onRegister() {
     this.formSubmitted = true; // Indica que o formulário foi submetido
 
     // Verifica se os campos estão preenchidos
-    if (!this.user.userName || !this.user.password || !this.user.confirmPassword) {
+    if (
+      !this.user.userName ||
+      !this.user.password ||
+      !this.user.confirmPassword
+    ) {
       this.errorMessage = 'Por favor, preencha todos os campos obrigatórios.';
       this.successMessage = '';
 
       // Exibe o SnackBar de erro
       this.snackBar.open(this.errorMessage, 'Fechar', {
         duration: 3000,
-        panelClass: ['snackbar-error']
+        panelClass: ['snackbar-error'],
       });
 
       this.formSubmitted = false; // Permite que o formulário seja submetido novamente
@@ -46,7 +51,7 @@ export class RegisterComponent {
       // Exibe o SnackBar de erro
       this.snackBar.open(this.errorMessage, 'Fechar', {
         duration: 3000,
-        panelClass: ['snackbar-error']
+        panelClass: ['snackbar-error'],
       });
 
       this.formSubmitted = false; // Permite nova submissão após erro
@@ -61,11 +66,11 @@ export class RegisterComponent {
       // Exibe o SnackBar de erro
       this.snackBar.open(this.errorMessage, 'Fechar', {
         duration: 3000,
-        panelClass: ['snackbar-error']
+        panelClass: ['snackbar-error'],
       });
 
-      this.formSubmitted = false; 
-      return; 
+      this.formSubmitted = false;
+      return;
     }
 
     // Chama o serviço de registro
@@ -76,31 +81,31 @@ export class RegisterComponent {
 
         this.snackBar.open(this.successMessage, 'Fechar', {
           duration: 3000,
-          panelClass: ['snackbar-success']
+          panelClass: ['snackbar-success'],
         });
 
         // Redireciona para a página inicial após sucesso
         this.router.navigate(['/']);
       },
       error: (error) => {
-        debugger
-        const errorMessage = error.error.split('\r\n')[0]; 
+        debugger;
+        const errorMessage = error.error.split('\r\n')[0];
 
-        if (errorMessage.includes("Usuário já cadastrado")) {
-          this.errorMessage = "Usuário já cadastrado"; 
+        if (errorMessage.includes('Usuário já cadastrado')) {
+          this.errorMessage = 'Usuário já cadastrado';
         } else {
           this.errorMessage = 'Erro desconhecido.';
         }
 
-        this.successMessage = '';  
+        this.successMessage = '';
 
         this.snackBar.open(this.errorMessage, 'Fechar', {
           duration: 3000,
-          panelClass: ['snackbar-error']
+          panelClass: ['snackbar-error'],
         });
 
         this.formSubmitted = false; // Permite nova submissão após erro
-      }
+      },
     });
   }
 
@@ -112,7 +117,7 @@ export class RegisterComponent {
     // Exibe um SnackBar informando o cancelamento
     this.snackBar.open('Operação cancelada.', 'Fechar', {
       duration: 3000,
-      panelClass: ['snackbar-info']
+      panelClass: ['snackbar-info'],
     });
 
     // Redireciona para a página inicial

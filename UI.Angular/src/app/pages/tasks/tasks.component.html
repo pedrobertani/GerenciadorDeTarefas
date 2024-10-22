@@ -1,6 +1,13 @@
 <section>
-  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-    <div style="display: flex; gap: 10px;">
+  <div
+    style="
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    "
+  >
+    <div style="display: flex; gap: 10px">
       <button mat-raised-button color="primary" (click)="addTask()">
         <i class="pi pi-plus"></i> Adicionar Tarefa
       </button>
@@ -8,7 +15,7 @@
         <i class="pi pi-sign-out"></i> Logoff
       </button>
     </div>
-    <span>{{ userName }}</span> <!-- Exibe o nome do usuário logado -->
+    <span>Usuário : {{ userName }} </span>
   </div>
 
   <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
@@ -38,31 +45,45 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Ações</th>
       <td mat-cell *matCellDef="let task" class="actions-cell">
-        <button mat-icon-button (click)="markAsCompleted(task.taskId)" 
-                aria-label="Marcar como concluída" 
-                matTooltip="Marcar como concluída">
-          <i class="pi pi-check"></i> <!-- PrimeIcons check icon -->
+        <button
+          mat-icon-button
+          (click)="markAsCompleted(task.taskId)"
+          aria-label="Marcar como concluída"
+          matTooltip="Marcar como concluída"
+        >
+          <i class="pi pi-check"></i>
+          <!-- PrimeIcons check icon -->
         </button>
-        <button mat-icon-button (click)="editTask(task)" 
-                aria-label="Editar tarefa" 
-                matTooltip="Editar tarefa">
-          <i class="pi pi-pencil"></i> <!-- PrimeIcons edit icon -->
+        <button
+          mat-icon-button
+          (click)="editTask(task)"
+          aria-label="Editar tarefa"
+          matTooltip="Editar tarefa"
+        >
+          <i class="pi pi-pencil"></i>
+          <!-- PrimeIcons edit icon -->
         </button>
-        <button mat-icon-button (click)="deleteTask(task.taskId)" 
-                aria-label="Remover tarefa" 
-                matTooltip="Remover tarefa">
-          <i class="pi pi-trash"></i> <!-- PrimeIcons trash icon -->
+        <button
+          mat-icon-button
+          (click)="deleteTask(task.taskId)"
+          aria-label="Remover tarefa"
+          matTooltip="Remover tarefa"
+        >
+          <i class="pi pi-trash"></i>
+          <!-- PrimeIcons trash icon -->
         </button>
       </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 
-  <mat-paginator [length]="totalTasks" 
-                 [pageSize]="pageSize" 
-                 [pageSizeOptions]="[10, 25, 50]"
-                 (page)="pageChanged($event)">
+  <mat-paginator
+    [length]="totalTasks"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="[10, 25, 50]"
+    (page)="pageChanged($event)"
+  >
   </mat-paginator>
 </section>

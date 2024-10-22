@@ -8,11 +8,10 @@ const routes: Routes = [
   { path: 'cadastro', component: RegisterComponent },
   { path: '', component: LogonComponent },
   { path: 'tarefas', component: TasksComponent },
-
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

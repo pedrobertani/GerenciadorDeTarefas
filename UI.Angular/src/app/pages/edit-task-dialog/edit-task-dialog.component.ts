@@ -5,7 +5,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'app-edit-task-dialog',
   templateUrl: './edit-task-dialog.component.html',
-  styleUrls: ['./edit-task-dialog.component.css']
+  styleUrls: ['./edit-task-dialog.component.css'],
 })
 export class EditTaskDialogComponent {
   editTaskForm: FormGroup;
@@ -14,15 +14,15 @@ export class EditTaskDialogComponent {
   constructor(
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<EditTaskDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { task: any; isEditMode: boolean }
+    @Inject(MAT_DIALOG_DATA) public data: { task: any; isEditMode: boolean },
   ) {
-    this.isEditMode = data.isEditMode; 
+    this.isEditMode = data.isEditMode;
     this.editTaskForm = this.fb.group({
-      title: [data.task?.title || ''], 
+      title: [data.task?.title || ''],
       description: [data.task?.description || ''],
-      completed: [data.task?.completed || false], 
-      taskId: [data.task?.taskId || null], 
-      userId: [data.task?.userId || null] 
+      completed: [data.task?.completed || false],
+      taskId: [data.task?.taskId || null],
+      userId: [data.task?.userId || null],
     });
   }
 

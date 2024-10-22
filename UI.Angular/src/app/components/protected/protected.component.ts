@@ -4,7 +4,7 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-protected',
   templateUrl: './protected.component.html',
-  styleUrls: ['./protected.component.css']
+  styleUrls: ['./protected.component.css'],
 })
 export class ProtectedComponent implements OnInit {
   protectedData: any;
@@ -18,7 +18,7 @@ export class ProtectedComponent implements OnInit {
       },
       error: (error) => {
         console.error('Erro ao acessar dados protegidos', error);
-      }
+      },
     });
   }
 }

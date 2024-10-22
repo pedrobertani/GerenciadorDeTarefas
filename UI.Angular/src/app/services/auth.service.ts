@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { LoginModel } from '../models/login.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   private apiUrl = 'https://localhost:7222/api/auth';
@@ -34,15 +34,15 @@ export class AuthService {
   // Método para obter dados protegidos
   getProtectedData(): Observable<any> {
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.getToken()}`
+      Authorization: `Bearer ${this.getToken()}`,
     });
 
     return this.http.get<any>(`${this.apiUrl}/protected`, { headers });
   }
 
-    // Método para fazer logout
-    logout(): void {
-      localStorage.removeItem('token');
-      localStorage.removeItem('userId');
-    }
+  // Método para fazer logout
+  logout(): void {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userId');
+  }
 }

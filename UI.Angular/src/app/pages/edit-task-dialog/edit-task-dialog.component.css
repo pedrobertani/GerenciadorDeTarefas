@@ -9,7 +9,6 @@
   background-color: #f9f9f9;
 }
 
-
 label {
   margin-bottom: 8px;
   font-weight: bold;
@@ -28,13 +27,13 @@ mat-form-field input {
 
 /* Estilo para os botões */
 button {
-  margin: 8px 5%; 
-  color: white; 
-  padding: 10px 10px; 
-  border: none; 
-  border-radius: 4px; 
-  cursor: pointer; 
-  width: 40%; 
+  margin: 8px 5%;
+  color: white;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 40%;
 }
 
 button.button-cancel:hover {
@@ -47,7 +46,7 @@ button.button-save:hover {
 
 button.button-cancel {
   color: white; /* Cor do texto do botão */
-  background-color: red; 
+  background-color: red;
 }
 
 button.button-save {

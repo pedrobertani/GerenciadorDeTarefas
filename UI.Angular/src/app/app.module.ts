@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';  // Adicione esta linha
+import { ReactiveFormsModule } from '@angular/forms'; // Adicione esta linha
 
 // Importando módulos do Angular Material
 import { MatInputModule } from '@angular/material/input';
@@ -31,7 +31,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     RegisterComponent,
     LogonComponent,
     TasksComponent,
-    EditTaskDialogComponent
+    EditTaskDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,20 +45,19 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatButtonModule,
     MatFormFieldModule,
     MatIconModule,
-    MatTableModule,    
+    MatTableModule,
     MatCheckboxModule,
     MatTooltipModule,
-    MatSnackBarModule
-
+    MatSnackBarModule,
   ],
   providers: [
     provideAnimationsAsync(),
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi: true
-    }
+      multi: true,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
