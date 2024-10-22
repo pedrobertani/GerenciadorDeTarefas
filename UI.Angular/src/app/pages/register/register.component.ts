@@ -9,14 +9,14 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  user: User = { userName: '', password: '', confirmPassword: '' }; 
-  errorMessage: string = '';
-  successMessage: string = '';
-  formSubmitted: boolean = false; 
+  protected user: User = { userName: '', password: '', confirmPassword: '' }; 
+  protected errorMessage: string = '';
+  protected successMessage: string = '';
+  protected formSubmitted: boolean = false; 
 
   constructor(private userService: UserService, private router: Router) {}
 
-  onRegister() {
+  protected onRegister() {
     this.formSubmitted = true; 
 
     // Verifica se os campos estão preenchidos
@@ -47,7 +47,7 @@ export class RegisterComponent {
     });
   }
 
-  onCancel() {
+  protected onCancel() {
     this.user = { userName: '', password: '', confirmPassword: '' }; // Limpa os campos
     this.successMessage = '';
     this.errorMessage = '';

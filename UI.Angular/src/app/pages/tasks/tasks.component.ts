@@ -13,14 +13,14 @@ import { Route, Router } from '@angular/router';
   styleUrls: ['./tasks.component.css']
 })
 export class TasksComponent implements OnInit {
-  tasks: UserTask[] = [];
-  errorMessage: string = '';
-  displayedColumns: string[] = ['title', 'description', 'completed', 'actions'];
+  protected tasks: UserTask[] = [];
+  protected errorMessage: string = '';
+  protected displayedColumns: string[] = ['title', 'description', 'completed', 'actions'];
 
   // Variáveis para paginação
-  currentPage: number = 0;
-  pageSize: number = 10;
-  totalTasks: number = 0; 
+  protected currentPage: number = 0;
+  protected pageSize: number = 10;
+  protected totalTasks: number = 0; 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(public dialog: MatDialog, 
@@ -35,7 +35,7 @@ export class TasksComponent implements OnInit {
   }
 
   // Abrir modal para editar tarefa existente
-editTask(task: UserTask): void {
+  protected editTask(task: UserTask): void {
   const dialogRef = this.dialog.open(EditTaskDialogComponent, {
       width: '400px',
       height: 'auto',
@@ -60,20 +60,19 @@ editTask(task: UserTask): void {
 }
 
   // Abrir modal para adicionar nova tarefa
-  addTask(): void {
+  protected addTask(): void {
     const dialogRef = this.dialog.open(EditTaskDialogComponent, {
       width: '400px',
       height: 'auto',
       data: {
-          task: null, // Para o novo objeto de tarefa
-          isEditMode: false // Indica que estamos adicionando uma nova tarefa
+          task: null, 
+          isEditMode: false 
       },
       position: { left: '50vw' }, 
     });
   
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // Crie o objeto UserTask a ser enviado para o backend
         const userTask: UserTask = {
           taskId: 0, 
           title: result.title, 
@@ -99,7 +98,7 @@ editTask(task: UserTask): void {
   }
   
   
-  loadTasks() {
+  protected loadTasks() {
     this.taskService.getTasks(this.currentPage + 1, this.pageSize).subscribe({
         next: (response) => {
             this.tasks = response.tasks; // Armazena as tarefas
@@ -113,13 +112,13 @@ editTask(task: UserTask): void {
 }
 
   // Quando a página muda, chamamos loadTasks para carregar novas tarefas
-  pageChanged(event: any) {
+  protected pageChanged(event: any) {
     this.currentPage = event.pageIndex;
     this.pageSize = event.pageSize; 
     this.loadTasks(); 
   }
 
-  markAsCompleted(taskId: number): void {
+  protected  markAsCompleted(taskId: number): void {
     this.taskService.completeTask(taskId).subscribe(
         success => {
             if (success) {
@@ -133,10 +132,10 @@ editTask(task: UserTask): void {
           }
         );
         setTimeout(() => this.loadTasks(), 100);
-}
+  }
 
 
-  deleteTask(taskId: number): void {
+  protected deleteTask(taskId: number): void {
     this.taskService.deleteTask(taskId).subscribe(
         success => {
             if (success) {
@@ -151,12 +150,12 @@ editTask(task: UserTask): void {
           setTimeout(() => this.loadTasks(), 1000);
   }
 
-  logoff(){
+  protected logoff(){
     this.authService.logout();
     this.navigateToLogon();
   }
 
-  navigateToLogon() {
+  protected navigateToLogon() {
     this.router.navigate(['/']);
   }
 }

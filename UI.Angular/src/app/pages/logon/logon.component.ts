@@ -9,12 +9,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./logon.component.css']
 })
 export class LogonComponent {
-  loginModel: LoginModel = { userName: '', password: '' };
-  errorMessage: string = '';
+  protected loginModel: LoginModel = { userName: '', password: '' };
+  protected errorMessage: string = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  onLogin() {
+  protected onLogin() {
     this.authService.login(this.loginModel).subscribe({
       next: (response) => {
         // Armazenar o token e o userId no localStorage
@@ -28,7 +28,7 @@ export class LogonComponent {
     });
   }
 
-  navigateToRegister() {
+  protected navigateToRegister() {
     this.router.navigate(['/cadastro']);
   }
 }
