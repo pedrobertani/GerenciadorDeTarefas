@@ -33,7 +33,9 @@ O usuário pode atualizar o título e a descrição de uma tarefa existente.
 A tarefa atualizada é exibida na lista.
 7. Remover Tarefa
 O usuário pode remover uma tarefa da lista.
+
 Requisitos Técnicos
+---
 O banco de dados será mantido por "migrations".
 Testes unitários devem ser implementados.
 O front-end será desenvolvido utilizando o framework Angular.
