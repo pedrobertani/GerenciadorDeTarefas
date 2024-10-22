@@ -13,20 +13,23 @@ import { Route, Router } from '@angular/router';
   styleUrls: ['./tasks.component.css']
 })
 export class TasksComponent implements OnInit {
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   protected tasks: UserTask[] = [];
   protected errorMessage: string = '';
   protected displayedColumns: string[] = ['title', 'description', 'completed', 'actions'];
+  protected userName: string = '';
 
   // Variáveis para paginação
   protected currentPage: number = 0;
   protected pageSize: number = 10;
   protected totalTasks: number = 0; 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(public dialog: MatDialog, 
     private taskService: TaskService,
     private authService: AuthService,
     private router: Router) {
+    this.userName = localStorage.getItem('userName') || 'Usuário';
+
     this.loadTasks(); 
   }
 

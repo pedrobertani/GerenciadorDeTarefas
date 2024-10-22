@@ -24,7 +24,7 @@ public class AuthController : ControllerBase
         }
 
         var token = _authService.GenerateJwtToken(usuario);
-        return Ok(new { Token = token, userId = usuario.UserId });
+        return Ok(new { Token = token, userName = usuario.UserName });
     }
 
     [HttpGet("protected")]

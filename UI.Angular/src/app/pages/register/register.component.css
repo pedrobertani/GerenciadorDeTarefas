@@ -69,3 +69,18 @@ button.cancel-button {
 button.cancel-button:hover {
   background-color: red; /* Cor de fundo ao passar o mouse */
 }
+
+.snackbar-success {
+  background-color: #4caf50; /* Verde para sucesso */
+  color: white;
+}
+
+.snackbar-error {
+  background-color: #f44336; /* Vermelho para erro */
+  color: white;
+}
+
+.snackbar-info {
+  background-color: #2196f3; /* Azul para informações */
+  color: white;
+}

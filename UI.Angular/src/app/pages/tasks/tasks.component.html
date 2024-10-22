@@ -1,11 +1,14 @@
 <section>
-  <div style="display: flex; gap: 10px; margin-bottom: 10px;">
-    <button mat-raised-button color="primary" (click)="addTask()">
-      <i class="pi pi-plus"></i> Adicionar Tarefa
-    </button>
-    <button mat-raised-button color="warn" (click)="logoff()">
-      <i class="pi pi-sign-out"></i> Logoff
-    </button>
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+    <div style="display: flex; gap: 10px;">
+      <button mat-raised-button color="primary" (click)="addTask()">
+        <i class="pi pi-plus"></i> Adicionar Tarefa
+      </button>
+      <button mat-raised-button color="warn" (click)="logoff()">
+        <i class="pi pi-sign-out"></i> Logoff
+      </button>
+    </div>
+    <span>{{ userName }}</span> <!-- Exibe o nome do usuário logado -->
   </div>
 
   <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>

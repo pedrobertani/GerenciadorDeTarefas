@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -46,7 +47,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatIconModule,
     MatTableModule,    
     MatCheckboxModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSnackBarModule
 
   ],
   providers: [

@@ -19,9 +19,9 @@ namespace Application.Services
 
         public async Task<User> Register(UserDto registerDto)
         {
-            //var existingUser = await _userRepository.GetByUsername(registerDto.UserName);
-            //if (existingUser != null)
-            //    throw new Exception("User already exists");
+            var existingUser = await _userRepository.GetByUsername(registerDto.UserName);
+            if (existingUser != null)
+                throw new Exception("Usuário já cadastrado");
 
             var usuario = _mapper.Map<User>(registerDto);
             return await _userRepository.Register(usuario, registerDto.Password);

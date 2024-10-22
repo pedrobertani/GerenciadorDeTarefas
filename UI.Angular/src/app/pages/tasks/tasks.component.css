@@ -16,3 +16,8 @@
     justify-content: center;
   }
   
+  span {
+    font-weight: bold;
+    color: #555; /* Altere a cor conforme necessário */
+  }
+  
