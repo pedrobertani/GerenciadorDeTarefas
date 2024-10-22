@@ -1,9 +1,11 @@
+import { AuthService } from './../../services/auth.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 import { UserTask } from '../../models/user-task.model';
 import { MatDialog } from '@angular/material/dialog';
 import { EditTaskDialogComponent } from '../edit-task-dialog/edit-task-dialog.component';
 import { MatPaginator } from '@angular/material/paginator';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-tasks',
@@ -22,7 +24,9 @@ export class TasksComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(public dialog: MatDialog, 
-    private taskService: TaskService) {
+    private taskService: TaskService,
+    private authService: AuthService,
+    private router: Router) {
     this.loadTasks(); 
   }
 
@@ -95,7 +99,6 @@ editTask(task: UserTask): void {
   }
   
   
-  
   loadTasks() {
     this.taskService.getTasks(this.currentPage + 1, this.pageSize).subscribe({
         next: (response) => {
@@ -108,7 +111,6 @@ editTask(task: UserTask): void {
         }
     });
 }
-
 
   // Quando a página muda, chamamos loadTasks para carregar novas tarefas
   pageChanged(event: any) {
@@ -147,5 +149,14 @@ editTask(task: UserTask): void {
             }
           );
           setTimeout(() => this.loadTasks(), 1000);
+  }
+
+  logoff(){
+    this.authService.logout();
+    this.navigateToLogon();
+  }
+
+  navigateToLogon() {
+    this.router.navigate(['/']);
   }
 }

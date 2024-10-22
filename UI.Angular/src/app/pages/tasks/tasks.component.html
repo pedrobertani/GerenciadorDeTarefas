@@ -1,6 +1,8 @@
-<div>
+<div style="display: flex; gap: 10px;">
   <button mat-raised-button color="primary" (click)="addTask()">Adicionar Tarefa</button>
+  <button mat-raised-button color="warn" (click)="logoff()">Logoff</button>
 </div>
+
 <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
 
 <table mat-table [dataSource]="tasks" class="mat-elevation-z8">

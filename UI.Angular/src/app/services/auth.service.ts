@@ -39,4 +39,10 @@ export class AuthService {
 
     return this.http.get<any>(`${this.apiUrl}/protected`, { headers });
   }
+
+    // Método para fazer logout
+    logout(): void {
+      localStorage.removeItem('token');
+      localStorage.removeItem('userId');
+    }
 }

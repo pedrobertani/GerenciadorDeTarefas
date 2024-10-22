@@ -16,9 +16,8 @@ export class AuthInterceptor implements HttpInterceptor {
           });
           return next.handle(clonedRequest).pipe(
             catchError(err => {
-              // Aqui você pode lidar com erros globais
               console.error('Erro na requisição:', err);
-              return throwError(err); // Re-throw para que outros manipuladores de erro possam lidar com ele
+              return throwError(err); 
             })
           );
         }
