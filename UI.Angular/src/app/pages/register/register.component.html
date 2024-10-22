@@ -22,6 +22,9 @@
       type="password"
     />
     <mat-error *ngIf="!user.password">Senha é obrigatória</mat-error>
+    <mat-error *ngIf="user.password && user.password.length < 6">
+      A senha deve conter no mínimo 6 caracteres
+    </mat-error>
   </mat-form-field>
 
   <!-- Campo Confirmação de Senha -->
