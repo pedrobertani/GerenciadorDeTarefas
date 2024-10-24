@@ -18,12 +18,11 @@ public class AuthService : IAuthService
     {
         _authRepository = authRepository;
 
-        // Lê a chave JWT da configuração
         var jwtKey = configuration["Jwt:Key"];
-        if (string.IsNullOrEmpty(jwtKey) || jwtKey.Length < 64) // Verifica se a chave tem pelo menos 64 caracteres
+        if (string.IsNullOrEmpty(jwtKey) || jwtKey.Length < 64) 
             throw new ArgumentException("A chave JWT deve ter pelo menos 64 caracteres.", nameof(jwtKey));
 
-        _jwtKey = Encoding.UTF8.GetBytes(jwtKey); // Converte a chave para array de bytes
+        _jwtKey = Encoding.UTF8.GetBytes(jwtKey); 
         _mapper = mapper;
     }
 

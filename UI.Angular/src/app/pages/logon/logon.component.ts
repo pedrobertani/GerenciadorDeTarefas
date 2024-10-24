@@ -29,8 +29,8 @@ export class LogonComponent {
 
         // Exibe o SnackBar de sucesso
         this.snackBar.open('Login realizado com sucesso!', 'Fechar', {
-          duration: 3000, // Duração em milissegundos
-          panelClass: ['snackbar-success'], // Classe CSS para personalização
+          duration: 3000, 
+          panelClass: ['snackbar-success'], 
         });
 
         this.router.navigate(['/tarefas']);
@@ -40,8 +40,8 @@ export class LogonComponent {
 
         // Exibe o SnackBar de erro
         this.snackBar.open(this.errorMessage, 'Fechar', {
-          duration: 3000, // Duração em milissegundos
-          panelClass: ['snackbar-error'], // Classe CSS para personalização
+          duration: 3000, 
+          panelClass: ['snackbar-error'], 
         });
       },
     });

@@ -154,6 +154,7 @@ export class TasksComponent implements OnInit {
   }
 
   protected markAsCompleted(taskId: number): void {
+    debugger
     this.taskService.completeTask(taskId).subscribe(
       (success) => {
         if (success) {

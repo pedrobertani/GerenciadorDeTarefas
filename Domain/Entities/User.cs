@@ -16,5 +16,7 @@ public class User
     [Required]
     public byte[] SaltPassword { get; set; }
 
-    public DateTime DateRegister { get; set; } = DateTime.Now; 
+    public DateTime DateRegister { get; set; } = DateTime.Now;
+    public virtual ICollection<UserTask> Tasks { get; set; } = new List<UserTask>();
+
 }
