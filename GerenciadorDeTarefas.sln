@@ -26,9 +26,6 @@ EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "UI.Angular", "UI.Angular\UI.Angular.esproj", "{C577D794-C1E3-41C7-8AD0-4E2ECD66BA34}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens de Solução", "{BB81CA49-4B76-4064-A9A9-A4D49C13180E}"
-	ProjectSection(SolutionItems) = preProject
-		Dockerfile = Dockerfile
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
