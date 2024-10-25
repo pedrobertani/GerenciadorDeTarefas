@@ -1,20 +1,15 @@
-
 # Etapa 1: Imagem base do SDK para build
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
 
-# Copiar o arquivo de configuração do NuGet
-# Isso garante que o NuGet use a configuração correta antes do restore
-#COPY WebApi/nuget.config ./
-#
 # Copiar o arquivo de solução e todos os arquivos de projeto
-# Certifique-se de copiar os arquivos de projeto para realizar o restore corretamente
 COPY *.sln . 
 COPY WebApi/WebApi.csproj WebApi/
 COPY Domain/Domain.csproj Domain/
 COPY Application/Application.csproj Application/
 COPY Infrastructure.Data/Infrastructure.Data.csproj Infrastructure.Data/
 COPY Infrastructure.IoC/Infrastructure.IoC.csproj Infrastructure.IoC/
+COPY UI.Angular/UI.Angular.esproj UI.Angular/
 
 # Limpar o cache local do NuGet para evitar problemas com pacotes antigos
 RUN dotnet nuget locals all --clear
