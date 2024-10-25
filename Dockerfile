@@ -5,8 +5,8 @@ WORKDIR /app
 
 # Copiar o arquivo de configuração do NuGet
 # Isso garante que o NuGet use a configuração correta antes do restore
-COPY WebApi/nuget.config ./
-
+#COPY WebApi/nuget.config ./
+#
 # Copiar o arquivo de solução e todos os arquivos de projeto
 # Certifique-se de copiar os arquivos de projeto para realizar o restore corretamente
 COPY *.sln . 
