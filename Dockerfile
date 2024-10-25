@@ -43,4 +43,4 @@ EXPOSE 80
 ENV ASPNETCORE_URLS=http://+:80
 
 # Comando de entrada para rodar a WebAPI
-ENTRYPOINT ["dotnet", "WebAPI.dll"]
+ENTRYPOINT ["dotnet", "WebApi.dll"]
