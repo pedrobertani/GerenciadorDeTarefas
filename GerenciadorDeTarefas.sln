@@ -21,6 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.IoC", "Infra
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "UI.Angular", "UI.Angular\UI.Angular.esproj", "{C577D794-C1E3-41C7-8AD0-4E2ECD66BA34}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens de Solução", "{2ED1F899-EB6C-426F-8104-820761575864}"
+	ProjectSection(SolutionItems) = preProject
+		Dockerfile = Dockerfile
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
